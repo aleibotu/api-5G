@@ -3,6 +3,7 @@ const {isStartTimeBeforeEndTime, isTimeScaleLessThan7Days, isValidTimeString} = 
 const express = require('express')
 const {PrismaClient} = require('@prisma/client')
 const mqtt = require("mqtt");
+const cors = require('cors')
 
 require('dotenv').config();
 
@@ -15,6 +16,7 @@ const {
 const prisma = new PrismaClient()
 
 const app = express();
+app.use(cors())
 
 const clientId = "id_" + Math.random().toString(16).substring(2, 8);
 
